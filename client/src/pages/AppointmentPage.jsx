@@ -10,7 +10,8 @@ import {
   faTools,
   faClock,
   faShieldAlt,
-  faCheckCircle
+  faCheckCircle,
+  faExclamationCircle
 } from '@fortawesome/free-solid-svg-icons';
 import { useInView } from 'react-intersection-observer';
 import SEO from '../components/SEO';
@@ -43,7 +44,8 @@ const BookAppointmentPage = () => {
     preferredTime: '',
     message: ''
   });
-
+  
+  const [errors, setErrors] = useState({});
   const [currentStep, setCurrentStep] = useState(1);
 
   useEffect(() => {
@@ -55,29 +57,58 @@ const BookAppointmentPage = () => {
     }
   }, [currentStep, navigate]);
 
+  const validateStep1 = () => {
+    const newErrors = {};
+    if (!formData.carBrand) newErrors.carBrand = "Car brand is required.";
+    if (!formData.carModel) newErrors.carModel = "Car model is required.";
+    if (!formData.carYear) newErrors.carYear = "Manufacturing year is required.";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const validateStep2 = () => {
+    const newErrors = {};
+    if (!formData.name.trim()) newErrors.name = "Full name is required.";
+    if (!formData.phone.trim()) {
+        newErrors.phone = "Phone number is required.";
+    } else if (!/^\d{10}$/.test(formData.phone)) {
+        newErrors.phone = "Please enter a valid 10-digit phone number.";
+    }
+    if (!formData.preferredDate) newErrors.preferredDate = "Please select a date.";
+    if (!formData.preferredTime) newErrors.preferredTime = "Please select a time slot.";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+        setErrors(prev => ({ ...prev, [name]: null }));
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!validateStep2()) return;
+    
     axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/appointments`, formData)
       .then(response => {
-        console.log('Appointment booked successfully:', response.data);
         setCurrentStep(3);
       })
       .catch(error => {
-        console.error('Error booking appointment:', error);
-        alert('There was an error booking your appointment. Please check your details and try again.');
+        alert('There was an error booking your appointment. Please try again.');
       });
   };
 
-  const nextStep = () => setCurrentStep(currentStep + 1);
-  const prevStep = () => setCurrentStep(currentStep - 1);
+  const nextStep = () => {
+    if (currentStep === 1 && validateStep1()) {
+        setCurrentStep(currentStep + 1);
+    }
+  };
 
+  const prevStep = () => setCurrentStep(currentStep - 1);
+  
   const timeSlots = [
     "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM",
     "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"
@@ -148,7 +179,7 @@ const BookAppointmentPage = () => {
           </AnimatedSection>
 
           <div className="max-w-4xl mx-auto">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} noValidate>
               {currentStep === 1 && (
                 <AnimatedSection>
                   <div className="bg-light rounded-2xl p-8">
@@ -156,7 +187,7 @@ const BookAppointmentPage = () => {
                     <div className="grid md:grid-cols-2 gap-6 mb-8">
                       <div>
                         <label className="block text-gray-700 font-inter font-semibold mb-2">Car Brand *</label>
-                        <select name="carBrand" value={formData.carBrand} onChange={handleChange} required className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all">
+                        <select name="carBrand" value={formData.carBrand} onChange={handleChange} className={`w-full px-4 py-3 rounded-xl border ${errors.carBrand ? 'border-red-500' : 'border-gray-300'} focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`}>
                           <option value="">Select Brand</option>
                           <option value="Maruti Suzuki">Maruti Suzuki</option>
                           <option value="Hyundai">Hyundai</option>
@@ -166,19 +197,22 @@ const BookAppointmentPage = () => {
                           <option value="Mahindra">Mahindra</option>
                           <option value="Other">Other</option>
                         </select>
+                        {errors.carBrand && <p className="text-red-500 text-sm mt-1 flex items-center"><FontAwesomeIcon icon={faExclamationCircle} className="mr-2"/>{errors.carBrand}</p>}
                       </div>
                       <div>
                         <label className="block text-gray-700 font-inter font-semibold mb-2">Car Model *</label>
-                        <input type="text" name="carModel" value={formData.carModel} onChange={handleChange} required className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" placeholder="e.g., Swift Dzire"/>
+                        <input type="text" name="carModel" value={formData.carModel} onChange={handleChange} className={`w-full px-4 py-3 rounded-xl border ${errors.carModel ? 'border-red-500' : 'border-gray-300'} focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`} placeholder="e.g., Swift Dzire"/>
+                        {errors.carModel && <p className="text-red-500 text-sm mt-1 flex items-center"><FontAwesomeIcon icon={faExclamationCircle} className="mr-2"/>{errors.carModel}</p>}
                       </div>
                       <div>
                         <label className="block text-gray-700 font-inter font-semibold mb-2">Manufacturing Year *</label>
-                        <select name="carYear" value={formData.carYear} onChange={handleChange} required className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all">
+                        <select name="carYear" value={formData.carYear} onChange={handleChange} className={`w-full px-4 py-3 rounded-xl border ${errors.carYear ? 'border-red-500' : 'border-gray-300'} focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`}>
                           <option value="">Select Year</option>
                           {Array.from({ length: 25 }, (_, i) => new Date().getFullYear() - i).map(year => (
                             <option key={year} value={year}>{year}</option>
                           ))}
                         </select>
+                        {errors.carYear && <p className="text-red-500 text-sm mt-1 flex items-center"><FontAwesomeIcon icon={faExclamationCircle} className="mr-2"/>{errors.carYear}</p>}
                       </div>
                       <div>
                         <label className="block text-gray-700 font-inter font-semibold mb-2">Current Kilometers</label>
@@ -186,7 +220,7 @@ const BookAppointmentPage = () => {
                       </div>
                     </div>
                     <div className="flex justify-end">
-                      <button type="button" onClick={nextStep} disabled={!formData.carBrand || !formData.carModel || !formData.carYear} className="bg-primary hover:bg-red-700 text-white font-bold py-3 px-8 rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                      <button type="button" onClick={nextStep} className="bg-primary hover:bg-red-700 text-white font-bold py-3 px-8 rounded-xl transition-all duration-300">
                         Continue to Schedule
                       </button>
                     </div>
@@ -202,11 +236,13 @@ const BookAppointmentPage = () => {
                         <h3 className="font-poppins font-bold text-secondary text-xl mb-4">Your Information</h3>
                         <div>
                           <label className="block text-gray-700 font-inter font-semibold mb-2">Full Name *</label>
-                          <input type="text" name="name" value={formData.name} onChange={handleChange} required className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Enter your full name"/>
+                          <input type="text" name="name" value={formData.name} onChange={handleChange} className={`w-full px-4 py-3 rounded-xl border ${errors.name ? 'border-red-500' : 'border-gray-300'} focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`} placeholder="Enter your full name"/>
+                          {errors.name && <p className="text-red-500 text-sm mt-1 flex items-center"><FontAwesomeIcon icon={faExclamationCircle} className="mr-2"/>{errors.name}</p>}
                         </div>
                         <div>
                           <label className="block text-gray-700 font-inter font-semibold mb-2">Phone Number *</label>
-                          <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" placeholder="+91 98765 43210"/>
+                          <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className={`w-full px-4 py-3 rounded-xl border ${errors.phone ? 'border-red-500' : 'border-gray-300'} focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`} placeholder="10-digit number"/>
+                          {errors.phone && <p className="text-red-500 text-sm mt-1 flex items-center"><FontAwesomeIcon icon={faExclamationCircle} className="mr-2"/>{errors.phone}</p>}
                         </div>
                         <div>
                           <label className="block text-gray-700 font-inter font-semibold mb-2">Email Address</label>
@@ -217,17 +253,19 @@ const BookAppointmentPage = () => {
                         <h3 className="font-poppins font-bold text-secondary text-xl mb-4">Preferred Schedule</h3>
                         <div>
                           <label className="block text-gray-700 font-inter font-semibold mb-2">Preferred Date *</label>
-                          <input type="date" name="preferredDate" value={formData.preferredDate} onChange={handleChange} required min={new Date().toISOString().split('T')[0]} className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"/>
+                          <input type="date" name="preferredDate" value={formData.preferredDate} onChange={handleChange} min={new Date().toISOString().split('T')[0]} className={`w-full px-4 py-3 rounded-xl border ${errors.preferredDate ? 'border-red-500' : 'border-gray-300'} focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`}/>
+                          {errors.preferredDate && <p className="text-red-500 text-sm mt-1 flex items-center"><FontAwesomeIcon icon={faExclamationCircle} className="mr-2"/>{errors.preferredDate}</p>}
                         </div>
                         <div>
                           <label className="block text-gray-700 font-inter font-semibold mb-2">Preferred Time *</label>
                           <div className="grid grid-cols-2 gap-2">
                             {timeSlots.map((time) => (
-                              <button key={time} type="button" onClick={() => setFormData({ ...formData, preferredTime: time })} className={`py-2 px-3 rounded-lg border transition-all duration-300 ${formData.preferredTime === time ? 'bg-primary border-primary text-white' : 'border-gray-300 text-gray-700 hover:border-primary'}`}>
+                              <button key={time} type="button" onClick={() => { setFormData({ ...formData, preferredTime: time }); setErrors(prev => ({...prev, preferredTime: null})); }} className={`py-2 px-3 rounded-lg border transition-all duration-300 ${formData.preferredTime === time ? 'bg-primary border-primary text-white' : 'border-gray-300 text-gray-700 hover:border-primary'}`}>
                                 {time}
                               </button>
                             ))}
                           </div>
+                          {errors.preferredTime && <p className="text-red-500 text-sm mt-1 flex items-center"><FontAwesomeIcon icon={faExclamationCircle} className="mr-2"/>{errors.preferredTime}</p>}
                         </div>
                       </div>
                     </div>
@@ -237,9 +275,7 @@ const BookAppointmentPage = () => {
                     </div>
                     <div className="flex justify-between mt-8">
                       <button type="button" onClick={prevStep} className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-3 px-8 rounded-xl transition-all duration-300">Back</button>
-                      <button type="submit" disabled={!formData.name || !formData.phone || !formData.preferredDate || !formData.preferredTime} className="bg-primary hover:bg-red-700 text-white font-bold py-3 px-8 rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
-                        Confirm Appointment
-                      </button>
+                      <button type="submit" className="bg-primary hover:bg-red-700 text-white font-bold py-3 px-8 rounded-xl transition-all duration-300">Confirm Appointment</button>
                     </div>
                   </div>
                 </AnimatedSection>
@@ -292,28 +328,9 @@ const BookAppointmentPage = () => {
             <h2 className="text-4xl md:text-5xl font-urbanist font-bold mb-6">Why Book With <span className="text-primary">Khokhar Motors</span>?</h2>
           </AnimatedSection>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <AnimatedSection delay={100}>
-                <div className="text-center">
-                    <FontAwesomeIcon icon={faClock} className="text-accent text-4xl mb-4" />
-                    <h3 className="font-poppins font-bold text-xl mb-3">Quick Service</h3>
-                    <p className="font-inter text-gray-300">Most services completed within 4-6 hours with our efficient workflow.</p>
-                </div>
-            </AnimatedSection>
-            {/* THIS IS THE LINE WITH THE TYPO */}
-            <AnimatedSection delay={200}>
-                <div className="text-center">
-                    <FontAwesomeIcon icon={faShieldAlt} className="text-accent text-4xl mb-4" />
-                    <h3 className="font-poppins font-bold text-xl mb-3">6-Month Warranty</h3>
-                    <p className="font-inter text-gray-300">All services and parts come with a comprehensive 6-month warranty.</p>
-                </div>
-            </AnimatedSection>
-            <AnimatedSection delay={300}>
-                <div className="text-center">
-                    <FontAwesomeIcon icon={faUser} className="text-accent text-4xl mb-4" />
-                    <h3 className="font-poppins font-bold text-xl mb-3">Expert Mechanics</h3>
-                    <p className="font-inter text-gray-300">Certified technicians with 15+ years of experience in automotive repair.</p>
-                </div>
-            </AnimatedSection>
+            <AnimatedSection delay={100}><div className="text-center"><FontAwesomeIcon icon={faClock} className="text-accent text-4xl mb-4" /><h3 className="font-poppins font-bold text-xl mb-3">Quick Service</h3><p className="font-inter text-gray-300">Most services completed within 4-6 hours with our efficient workflow.</p></div></AnimatedSection>
+            <AnimatedSection delay={200}><div className="text-center"><FontAwesomeIcon icon={faShieldAlt} className="text-accent text-4xl mb-4" /><h3 className="font-poppins font-bold text-xl mb-3">6-Month Warranty</h3><p className="font-inter text-gray-300">All services and parts come with a comprehensive 6-month warranty.</p></div></AnimatedSection>
+            <AnimatedSection delay={300}><div className="text-center"><FontAwesomeIcon icon={faUser} className="text-accent text-4xl mb-4" /><h3 className="font-poppins font-bold text-xl mb-3">Expert Mechanics</h3><p className="font-inter text-gray-300">Certified technicians with 15+ years of experience in automotive repair.</p></div></AnimatedSection>
           </div>
         </div>
       </section>
