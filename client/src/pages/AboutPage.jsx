@@ -210,49 +210,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-20 bg-light">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-16">
-            <div className="inline-block bg-primary/10 text-primary font-inter font-semibold px-6 py-2 rounded-full mb-4">
-              MEET OUR TEAM
-            </div>
-            <h2 className="text-4xl md:text-5xl font-urbanist font-bold text-secondary mb-6">
-              Expert <span className="text-primary">Mechanics</span> You Can Trust
-            </h2>
-            <p className="text-gray-600 font-inter text-lg max-w-2xl mx-auto">
-              Our certified technicians bring decades of combined experience and continuous training 
-              to deliver exceptional service for every vehicle.
-            </p>
-          </AnimatedSection>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teamMembers.map((member, index) => (
-              <AnimatedSection key={index} delay={index * 100}>
-                <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden">
-                  <div className="relative">
-                    <img 
-                      src={member.image} 
-                      alt={member.name}
-                      className="w-full h-64 object-cover"
-                    />
-                    <div className="absolute bottom-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-inter">
-                      {member.experience}
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-poppins font-bold text-secondary mb-2">{member.name}</h3>
-                    <p className="text-primary font-inter font-semibold mb-1">{member.position}</p>
-                    <p className="text-gray-600 font-inter text-sm mb-4">{member.specialty}</p>
-                    <p className="text-gray-600 font-inter text-sm leading-relaxed">{member.description}</p>
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      
       {/* Timeline Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">

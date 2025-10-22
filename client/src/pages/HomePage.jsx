@@ -32,37 +32,37 @@ const AnimatedSection = ({ children, className = '', delay = 0 }) => {
 
 // --- Hero Section ---
 const Hero = () => (
-  <div className="relative min-h-screen bg-gradient-to-br from-secondary via-dark to-dark text-white flex items-center justify-center overflow-hidden">
+  <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white flex items-center justify-center overflow-hidden">
     <div 
       className="absolute inset-0 bg-cover bg-center bg-no-repeat"
       style={{ 
         backgroundImage: "url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=2183&auto=format&fit=crop')",
       }}
     >
-      <div className="absolute inset-0 bg-gradient-to-r from-secondary/95 to-dark/90"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 to-gray-800/90"></div>
     </div>
     
     <div className="absolute inset-0 overflow-hidden">
-      <div className="absolute -top-1/2 -right-1/2 w-full h-full bg-gradient-radial from-primary/20 to-transparent animate-pulse"></div>
+      <div className="absolute -top-1/2 -right-1/2 w-full h-full bg-gradient-radial from-blue-600/10 to-transparent animate-pulse"></div>
     </div>
 
     <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
       <AnimatedSection>
-        <div className="inline-flex items-center bg-primary/20 backdrop-blur-sm rounded-full px-6 py-3 mb-8 border border-primary/30">
-          <FontAwesomeIcon icon={faAward} className="text-accent mr-2" />
-          <span className="font-inter font-semibold text-accent">Ahmedabad's Most Trusted Car Service Center</span>
+        <div className="inline-flex items-center bg-blue-600/20 backdrop-blur-sm rounded-full px-6 py-3 mb-8 border border-blue-400/30">
+          <FontAwesomeIcon icon={faAward} className="text-amber-400 mr-2" />
+          <span className="font-inter font-semibold text-amber-400">Ahmedabad's Most Trusted Car Service Center</span>
         </div>
       </AnimatedSection>
       
       <AnimatedSection delay={200}>
         <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-urbanist font-black mb-6 leading-tight">
-          Premium <span className="text-primary">Car Service</span> in Ahmedabad
+          Premium <span className="text-blue-400">Car Service</span> in Ahmedabad
         </h1>
       </AnimatedSection>
       
       <AnimatedSection delay={400}>
         <p className="text-xl md:text-2xl font-inter text-gray-300 max-w-4xl mx-auto mb-8 leading-relaxed">
-          Expert car repair, maintenance, and servicing with <span className="text-accent font-semibold">transparent pricing</span> and <span className="text-accent font-semibold">genuine parts</span>. Your trusted partner for complete automotive care in Ahmedabad.
+          Expert car repair, maintenance, and servicing with <span className="text-amber-400 font-semibold">transparent pricing</span> and <span className="text-amber-400 font-semibold">genuine parts</span>. Your trusted partner for complete automotive care in Ahmedabad.
         </p>
       </AnimatedSection>
 
@@ -70,14 +70,14 @@ const Hero = () => (
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
           <Link 
             to="/appointment" 
-            className="group bg-primary hover:bg-red-700 text-white font-bold text-lg py-4 px-12 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg flex items-center"
+            className="group bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg py-4 px-12 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg flex items-center"
           >
             Book Service Now
             <FontAwesomeIcon icon={faArrowRight} className="ml-3 group-hover:translate-x-2 transition-transform" />
           </Link>
           <Link 
-            to="/appointment" 
-            className="group border-2 border-white/30 hover:border-accent text-white font-bold text-lg py-4 px-12 rounded-xl transition-all duration-300 hover:bg-accent/10 flex items-center"
+            to="/services" 
+            className="group border-2 border-gray-400 hover:border-amber-400 text-white font-bold text-lg py-4 px-12 rounded-xl transition-all duration-300 hover:bg-amber-400/10 flex items-center"
           >
             View Services
             <FontAwesomeIcon icon={faWrench} className="ml-3 group-hover:rotate-45 transition-transform" />
@@ -88,11 +88,11 @@ const Hero = () => (
       <AnimatedSection delay={800}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
           <div className="flex items-center justify-center space-x-2">
-            <FontAwesomeIcon icon={faClock} className="text-accent text-2xl" />
+            <FontAwesomeIcon icon={faClock} className="text-amber-400 text-2xl" />
             <span className="font-inter font-semibold">Quick Service</span>
           </div>
           <div className="flex items-center justify-center space-x-2">
-            <FontAwesomeIcon icon={faAward} className="text-accent text-2xl" />
+            <FontAwesomeIcon icon={faAward} className="text-amber-400 text-2xl" />
             <span className="font-inter font-semibold">Expert Mechanics</span>
           </div>
         </div>
@@ -100,8 +100,8 @@ const Hero = () => (
     </div>
 
     <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-      <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-        <div className="w-1 h-3 bg-white/70 rounded-full mt-2"></div>
+      <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
+        <div className="w-1 h-3 bg-gray-300 rounded-full mt-2"></div>
       </div>
     </div>
   </div>
@@ -149,16 +149,16 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-24 bg-light relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-light"></div>
+    <section id="services" className="py-24 bg-gray-50 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100"></div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedSection className="text-center mb-16">
-          <div className="inline-block bg-primary/10 text-primary font-inter font-semibold px-6 py-2 rounded-full mb-4">
+          <div className="inline-block bg-blue-100 text-blue-700 font-inter font-semibold px-6 py-2 rounded-full mb-4">
             OUR SERVICES
           </div>
-          <h2 className="text-4xl md:text-5xl font-urbanist font-bold text-secondary mb-6">
-            Comprehensive <span className="text-primary">Car Care</span> Solutions
+          <h2 className="text-4xl md:text-5xl font-urbanist font-bold text-gray-800 mb-6">
+            Comprehensive <span className="text-blue-600">Car Care</span> Solutions
           </h2>
           <p className="text-gray-600 font-inter text-lg max-w-3xl mx-auto leading-relaxed">
             From routine maintenance to complex repairs, we offer complete automotive solutions with genuine parts and expert workmanship.
@@ -168,14 +168,14 @@ const Services = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <AnimatedSection key={index} delay={index * 100}>
-              <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 overflow-hidden">
+              <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-200 overflow-hidden">
                 <div className="p-8">
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <FontAwesomeIcon icon={service.icon} className="text-white text-2xl" />
                     </div>
                     <div className="text-right">
-                      <div className="flex text-accent">
+                      <div className="flex text-amber-500">
                         {[...Array(5)].map((_, i) => (
                           <FontAwesomeIcon key={i} icon={faStar} className="text-sm" />
                         ))}
@@ -183,7 +183,7 @@ const Services = () => {
                     </div>
                   </div>
                   
-                  <h3 className="text-xl font-poppins font-bold text-secondary mb-4 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-poppins font-bold text-gray-800 mb-4 group-hover:text-blue-600 transition-colors">
                     {service.title}
                   </h3>
                   
@@ -202,7 +202,7 @@ const Services = () => {
                   
                   <Link 
                     to="/appointment" 
-                    className="inline-flex items-center text-primary font-inter font-semibold group-hover:text-secondary transition-colors"
+                    className="inline-flex items-center text-blue-600 font-inter font-semibold group-hover:text-blue-800 transition-colors"
                   >
                     Book Service
                     <FontAwesomeIcon icon={faArrowRight} className="ml-2 group-hover:translate-x-2 transition-transform" />
@@ -238,31 +238,27 @@ const WhyUs = ({ siteInfo }) => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-br from-secondary to-dark text-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1553440569-bcc63803a83d?q=80&w=2025&auto=format&fit=crop')] bg-cover bg-center opacity-10"></div>
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
-      </div>
+    <section className="py-24 bg-gradient-to-br from-gray-800 to-gray-900 text-white relative overflow-hidden">
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1553440569-bcc63803a83d?q=80&w=2025&auto=format&fit=crop')] bg-cover bg-center opacity-5"></div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <AnimatedSection>
             <div className="relative">
-              <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-3 border border-white/20">
+              <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-3 border border-gray-600/20">
                 <img 
                   src="/service-1.jpg"
                   alt="Expert mechanic working on car engine at Khokhar Motors Ahmedabad"
                   className="rounded-2xl w-full shadow-2xl transform hover:scale-105 transition-transform duration-700"
                 />
               </div>
-              <div className="absolute -bottom-6 -left-6 bg-primary rounded-2xl p-6 shadow-2xl border-2 border-white/20 animate-pulse">
+              <div className="absolute -bottom-6 -left-6 bg-blue-600 rounded-2xl p-6 shadow-2xl border-2 border-blue-400/20">
                 <div className="text-center">
                   <div className="text-3xl font-urbanist font-black text-white">{siteInfo.yearsExperience || '15'}+</div>
                   <div className="text-white/90 font-inter text-sm font-semibold">Years Experience</div>
                 </div>
               </div>
-              <div className="absolute -top-4 -right-4 bg-accent text-dark rounded-xl px-4 py-2 shadow-lg">
+              <div className="absolute -top-4 -right-4 bg-amber-500 text-gray-900 rounded-xl px-4 py-2 shadow-lg">
                 <div className="flex items-center space-x-2">
                   <FontAwesomeIcon icon={faAward} className="text-sm" />
                   <span className="font-inter font-bold text-sm">Since 2008</span>
@@ -272,11 +268,11 @@ const WhyUs = ({ siteInfo }) => {
           </AnimatedSection>
 
           <AnimatedSection delay={200}>
-            <div className="inline-block bg-accent/20 text-accent font-inter font-semibold px-6 py-2 rounded-full mb-4 border border-accent/30">
+            <div className="inline-block bg-amber-500/20 text-amber-400 font-inter font-semibold px-6 py-2 rounded-full mb-4 border border-amber-400/30">
               WHY CHOOSE US
             </div>
             <h2 className="text-4xl md:text-5xl font-urbanist font-bold mb-6 leading-tight">
-              Why <span className="text-primary">Khokhar Motors</span> is Ahmedabad's #1 Choice
+              Why <span className="text-blue-400">Khokhar Motors</span> is Ahmedabad's #1 Choice
             </h2>
             <p className="text-gray-300 font-inter text-lg mb-8 leading-relaxed">
               We combine decades of expertise with cutting-edge technology to deliver unparalleled automotive care. 
@@ -285,27 +281,27 @@ const WhyUs = ({ siteInfo }) => {
             <div className="grid gap-6 mb-8">
               {features.map((feature, index) => (
                 <div key={index} className="flex items-start space-x-4 group p-4 rounded-2xl hover:bg-white/5 transition-all duration-300">
-                  <div className="flex-shrink-0 w-14 h-14 bg-primary/20 rounded-2xl flex items-center justify-center group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300 border border-primary/30">
-                    <FontAwesomeIcon icon={feature.icon} className="text-accent text-xl" />
+                  <div className="flex-shrink-0 w-14 h-14 bg-blue-600/20 rounded-2xl flex items-center justify-center group-hover:bg-blue-600/30 group-hover:scale-110 transition-all duration-300 border border-blue-400/30">
+                    <FontAwesomeIcon icon={feature.icon} className="text-amber-400 text-xl" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-poppins font-bold mb-2 group-hover:text-accent transition-colors">{feature.title}</h3>
+                    <h3 className="text-xl font-poppins font-bold mb-2 group-hover:text-amber-400 transition-colors">{feature.title}</h3>
                     <p className="text-gray-300 font-inter leading-relaxed">{feature.description}</p>
                   </div>
                 </div>
               ))}
             </div>
             <div className="mt-8 grid grid-cols-3 gap-4">
-              <div className="bg-white/10 rounded-xl p-4 text-center backdrop-blur-sm border border-white/10 hover:border-accent/30 transition-all duration-300 group">
-                <div className="text-2xl font-urbanist font-black text-accent group-hover:scale-110 transition-transform duration-300">{siteInfo.satisfiedClients || '1500'}+</div>
+              <div className="bg-white/10 rounded-xl p-4 text-center backdrop-blur-sm border border-gray-600/20 hover:border-amber-400/30 transition-all duration-300 group">
+                <div className="text-2xl font-urbanist font-black text-amber-400 group-hover:scale-110 transition-transform duration-300">{siteInfo.satisfiedClients || '1500'}+</div>
                 <div className="text-gray-300 font-inter text-sm mt-1">Satisfied Clients</div>
               </div>
-              <div className="bg-white/10 rounded-xl p-4 text-center backdrop-blur-sm border border-white/10 hover:border-accent/30 transition-all duration-300 group">
-                <div className="text-2xl font-urbanist font-black text-accent group-hover:scale-110 transition-transform duration-300">98%</div>
+              <div className="bg-white/10 rounded-xl p-4 text-center backdrop-blur-sm border border-gray-600/20 hover:border-amber-400/30 transition-all duration-300 group">
+                <div className="text-2xl font-urbanist font-black text-amber-400 group-hover:scale-110 transition-transform duration-300">98%</div>
                 <div className="text-gray-300 font-inter text-sm mt-1">Customer Satisfaction</div>
               </div>
-              <div className="bg-white/10 rounded-xl p-4 text-center backdrop-blur-sm border border-white/10 hover:border-accent/30 transition-all duration-300 group">
-                <div className="text-2xl font-urbanist font-black text-accent group-hover:scale-110 transition-transform duration-300">{siteInfo.totalEmployees || '10'}+</div>
+              <div className="bg-white/10 rounded-xl p-4 text-center backdrop-blur-sm border border-gray-600/20 hover:border-amber-400/30 transition-all duration-300 group">
+                <div className="text-2xl font-urbanist font-black text-amber-400 group-hover:scale-110 transition-transform duration-300">{siteInfo.totalEmployees || '10'}+</div>
                 <div className="text-gray-300 font-inter text-sm mt-1">Skilled Technicians</div>
               </div>
             </div>
@@ -321,14 +317,14 @@ const Testimonials = ({ testimonials }) => {
   if (testimonials.length === 0) return null;
 
   return (
-    <section className="py-24 bg-light relative overflow-hidden">
+    <section className="py-24 bg-gray-50 relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection className="text-center mb-16">
-          <div className="inline-block bg-primary/10 text-primary font-inter font-semibold px-6 py-2 rounded-full mb-4">
+          <div className="inline-block bg-blue-100 text-blue-700 font-inter font-semibold px-6 py-2 rounded-full mb-4">
             CUSTOMER REVIEWS
           </div>
-          <h2 className="text-4xl md:text-5xl font-urbanist font-bold text-secondary mb-6">
-            What Our <span className="text-primary">Customers</span> Say
+          <h2 className="text-4xl md:text-5xl font-urbanist font-bold text-gray-800 mb-6">
+            What Our <span className="text-blue-600">Customers</span> Say
           </h2>
           <p className="text-gray-600 font-inter text-lg max-w-2xl mx-auto">
             Don't just take our word for it. Here's what our satisfied customers in Ahmedabad have to say about their experience.
@@ -348,18 +344,18 @@ const Testimonials = ({ testimonials }) => {
           >
             {testimonials.map((testimonial, index) => (
               <SwiperSlide key={index}>
-                <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 h-full border border-gray-100">
-                  <div className="flex text-accent mb-4">
+                <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 h-full border border-gray-200">
+                  <div className="flex text-amber-500 mb-4">
                     {[...Array(5)].map((_, i) => (<FontAwesomeIcon key={i} icon={faStar} className="text-sm" />))}
                   </div>
-                  <FontAwesomeIcon icon={faQuoteLeft} className="text-primary text-2xl mb-6 opacity-50" />
+                  <FontAwesomeIcon icon={faQuoteLeft} className="text-blue-600 text-2xl mb-6 opacity-50" />
                   <p className="font-inter text-gray-700 mb-6 leading-relaxed italic">"{testimonial.review}"</p>
                   <div className="flex items-center mt-auto">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold mr-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center text-white font-bold mr-4">
                       {testimonial.author.charAt(0)}
                     </div>
                     <div>
-                      <p className="font-poppins font-bold text-secondary">{testimonial.author}</p>
+                      <p className="font-poppins font-bold text-gray-800">{testimonial.author}</p>
                       <p className="font-inter text-gray-500 text-sm">Ahmedabad Customer</p>
                     </div>
                   </div>
@@ -373,7 +369,7 @@ const Testimonials = ({ testimonials }) => {
   );
 };
 
-// --- DYNAMIC Contact & Location Section ---
+// --- Contact & Location Section ---
 const ContactSection = ({ siteInfo }) => {
   const formattedAddress = siteInfo.address ? siteInfo.address.split(',').map(part => part.trim()) : [];
   
@@ -382,13 +378,13 @@ const ContactSection = ({ siteInfo }) => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <AnimatedSection>
-            <div className="bg-gradient-to-br from-secondary to-dark rounded-3xl p-8 text-white">
-              <div className="inline-block bg-accent/20 text-accent font-inter font-semibold px-6 py-2 rounded-full mb-4">CONTACT US</div>
-              <h2 className="text-4xl font-urbanist font-bold mb-6">Visit Our <span className="text-primary">Car Service Center</span> in Ahmedabad</h2>
+            <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 text-white">
+              <div className="inline-block bg-amber-500/20 text-amber-400 font-inter font-semibold px-6 py-2 rounded-full mb-4">CONTACT US</div>
+              <h2 className="text-4xl font-urbanist font-bold mb-6">Visit Our <span className="text-blue-400">Car Service Center</span> in Ahmedabad</h2>
               <p className="text-gray-300 font-inter text-lg mb-8">Conveniently located in Ahmedabad with state-of-the-art facilities and ample parking space.</p>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} className="text-accent text-xl mt-1" />
+                  <FontAwesomeIcon icon={faMapMarkerAlt} className="text-amber-400 text-xl mt-1" />
                   <div>
                     <h3 className="font-poppins font-bold text-lg mb-2">Our Location</h3>
                     <p className="text-gray-300 font-inter">
@@ -397,21 +393,21 @@ const ContactSection = ({ siteInfo }) => {
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <FontAwesomeIcon icon={faPhoneAlt} className="text-accent text-xl mt-1" />
+                  <FontAwesomeIcon icon={faPhoneAlt} className="text-amber-400 text-xl mt-1" />
                   <div>
                     <h3 className="font-poppins font-bold text-lg mb-2">Call Us</h3>
                     <p className="text-gray-300 font-inter">{siteInfo.contactPhone || 'Loading...'}</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <FontAwesomeIcon icon={faEnvelope} className="text-accent text-xl mt-1" />
+                  <FontAwesomeIcon icon={faEnvelope} className="text-amber-400 text-xl mt-1" />
                   <div>
                     <h3 className="font-poppins font-bold text-lg mb-2">Email Us</h3>
                     <p className="text-gray-300 font-inter">{siteInfo.contactEmail || 'Loading...'}</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <FontAwesomeIcon icon={faClock} className="text-accent text-xl mt-1" />
+                  <FontAwesomeIcon icon={faClock} className="text-amber-400 text-xl mt-1" />
                   <div>
                     <h3 className="font-poppins font-bold text-lg mb-2">Working Hours</h3>
                     <p className="text-gray-300 font-inter">Mon - Sat: 8:00 AM - 8:00 PM<br />Sunday: 9:00 AM - 4:00 PM</p>
@@ -421,26 +417,26 @@ const ContactSection = ({ siteInfo }) => {
             </div>
           </AnimatedSection>
           <AnimatedSection>
-            <div className="bg-light rounded-3xl p-8 h-full">
-              <h3 className="text-3xl font-urbanist font-bold text-secondary mb-6">Quick Service <span className="text-primary">Enquiry</span></h3>
+            <div className="bg-gray-50 rounded-3xl p-8 h-full">
+              <h3 className="text-3xl font-urbanist font-bold text-gray-800 mb-6">Quick Service <span className="text-blue-600">Enquiry</span></h3>
               <form className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-gray-700 font-inter font-semibold mb-2">Your Name</label>
-                    <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Enter your name" />
+                    <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all" placeholder="Enter your name" />
                   </div>
                   <div>
                     <label className="block text-gray-700 font-inter font-semibold mb-2">Phone Number</label>
-                    <input type="tel" className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" placeholder="+91 98765 43210" />
+                    <input type="tel" className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all" placeholder="+91 98765 43210" />
                   </div>
                 </div>
                 <div>
                   <label className="block text-gray-700 font-inter font-semibold mb-2">Car Model</label>
-                  <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" placeholder="e.g., Honda City, Hyundai Creta" />
+                  <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all" placeholder="e.g., Honda City, Hyundai Creta" />
                 </div>
                 <div>
                   <label className="block text-gray-700 font-inter font-semibold mb-2">Service Required</label>
-                  <select className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all">
+                  <select className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all">
                     <option>Select Service</option>
                     <option>General Service</option>
                     <option>Engine Repair</option>
@@ -450,7 +446,7 @@ const ContactSection = ({ siteInfo }) => {
                     <option>Car Detailing</option>
                   </select>
                 </div>
-                <button type="submit" className="w-full bg-primary hover:bg-red-700 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+                <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
                   <FontAwesomeIcon icon={faCalendarCheck} className="mr-2" />
                   Get Free Quote
                 </button>
@@ -463,16 +459,15 @@ const ContactSection = ({ siteInfo }) => {
   );
 };
 
-// --- DYNAMIC Final CTA Banner ---
+// --- Final CTA Banner ---
 const CTABanner = ({ siteInfo }) => (
-  <section className="bg-gradient-to-r from-primary to-red-700 text-white relative overflow-hidden">
-    <div className="absolute inset-0 bg-[url('https://  ')] bg-cover bg-center opacity-10"></div>
+  <section className="bg-gradient-to-r from-blue-600 to-blue-700 text-white relative overflow-hidden">
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center relative z-10">
       <AnimatedSection>
-        <h2 className="text-4xl md:text-5xl font-urbanist font-black mb-6">Ready for Exceptional <span className="text-accent">Car Service</span> in Ahmedabad?</h2>
+        <h2 className="text-4xl md:text-5xl font-urbanist font-black mb-6">Ready for Exceptional <span className="text-amber-400">Car Service</span> in Ahmedabad?</h2>
         <p className="text-xl font-inter text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed">Join thousands of satisfied customers who trust Khokhar Motors for reliable, professional, and affordable car care.</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Link to="/appointment" className="group bg-accent hover:bg-amber-500 text-dark font-bold text-lg py-4 px-12 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg flex items-center">
+          <Link to="/appointment" className="group bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold text-lg py-4 px-12 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg flex items-center">
             Book Appointment Now
             <FontAwesomeIcon icon={faArrowRight} className="ml-3 group-hover:translate-x-2 transition-transform" />
           </Link>

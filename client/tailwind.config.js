@@ -4,12 +4,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#DC2626", // Professional red for trust and urgency
-        secondary: "#1E293B", // Sophisticated dark blue
-        accent: "#F59E0B", // Amber for highlights and CTAs
-        light: "#F8FAFC", // Clean light background
-        dark: "#0F172A", // Deep dark for contrast
-        success: "#10B981", // Green for positive elements
+        // Clean, Professional Color Palette
+        primary: "#2563eb",      // Professional Blue - Trustworthy & Clean
+        secondary: "#1e293b",    // Deep Navy - Professional & Strong
+        accent: "#f59e0b",       // Warm Amber - Attention & Energy
+        light: "#f8fafc",        // Clean White Background
+        dark: "#0f172a",         // Rich Dark Blue
+        success: "#059669",      // Emerald Green - Success & Growth
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
@@ -24,8 +25,8 @@ export default {
       },
       keyframes: {
         glow: {
-          "0%, 100%": { boxShadow: "0 0 5px #DC2626" },
-          "50%": { boxShadow: "0 0 20px #DC2626" },
+          "0%, 100%": { boxShadow: "0 0 5px rgba(37, 99, 235, 0.3)" },
+          "50%": { boxShadow: "0 0 20px rgba(37, 99, 235, 0.5)" },
         },
         fadeIn: {
           "0%": { opacity: "0" },
@@ -42,8 +43,8 @@ export default {
         },
       },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "service-gradient": "linear-gradient(135deg, #DC2626 0%, #1E293B 100%)",
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'service-gradient': 'linear-gradient(135deg, #2563eb 0%, #1e293b 100%)',
       },
     },
   },
