@@ -92,7 +92,7 @@ const Navbar = ({ siteInfo }) => {
               <div className="relative">
                 <div className="absolute -inset-1 bg-primary/20 rounded-xl blur-sm group-hover:blur-md transition-all duration-300 z-0"></div>
                  <div className="relative z-10 w-12 h-12 bg-gradient-to-br from-primary rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">  
-                  <img src='/logo.png'  className="w-12 h-12 object-contain"/>
+                  <img src='/logo.png'  className="w-13 h-13 object-contain"/>
                 </div>
                 <div className="absolute -inset-1 bg-primary/20 rounded-xl blur-sm group-hover:blur-md transition-all duration-300"></div>
               </div>

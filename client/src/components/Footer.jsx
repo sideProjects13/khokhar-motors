@@ -64,7 +64,7 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center mb-6 group">
               <div className="w-14 h-14 bg-gradient-to-br from-primary to-red-700 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <img src='/logo.png'  className="w-13 h-13 object-contain"/>
+                <img src='/logo.png'  className="w-14 h-14 object-contain"/>
               </div>
               <div className="ml-4">
                 <span className="text-2xl font-urbanist font-black group-hover:text-primary transition-colors">
