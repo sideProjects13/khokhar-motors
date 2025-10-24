@@ -500,7 +500,7 @@ const HomePage = ({ siteInfo }) => {
         title="Best Car Repair & Service Center in Ahmedabad | Khokhar Motors"
         description="Khokhar Motors - Ahmedabad's trusted car service center offering expert mechanical repairs, denting painting, AC service, and complete car maintenance. 15+ years experience with genuine parts and warranty."
         keywords="car service ahmedabad, car repair ahmedabad, mechanic ahmedabad, car ac service ahmedabad, denting painting ahmedabad, car maintenance ahmedabad, khokhar motors, best car service center ahmedabad"
-        canonical="https://khokharmotors.com"
+        canonical="https://khokharmotors.vercel.app/"
       />
       <Hero />
       <Services />
