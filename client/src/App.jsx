@@ -11,7 +11,6 @@ import ContactPage from './pages/ContactPage';
 import AppointmentPage from './pages/AppointmentPage';
 import BlogPage from './pages/BlogPage';
 import BlogPostPage from './pages/BlogPostPage';
-
 // Admin Imports
 import AdminLogin from './pages/admin/AdminLogin';
 import AdminLayout from './pages/admin/AdminLayout';
@@ -26,11 +25,9 @@ function App() {
   const [auth, setAuth] = useState(false);
   const [siteInfo, setSiteInfo] = useState({});
   const location = useLocation();
-
   useEffect(() => {
     const loggedIn = localStorage.getItem('khokhar_admin_auth') === 'true';
     setAuth(loggedIn);
-
     // Use the environment variable for the API call
     axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/site-info`)
       .then(response => {
@@ -42,7 +39,6 @@ function App() {
   }, []);
   
   const isAdminRoute = location.pathname.startsWith('/admin');
-
   return (
     <div className="bg-white">
       {!isAdminRoute && <Navbar siteInfo={siteInfo} />}
@@ -70,6 +66,7 @@ function App() {
         </Routes>
       </main>
       {!isAdminRoute && <Footer />}
+      <Analytics />
     </div>
   );
 }
